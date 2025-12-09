@@ -113,3 +113,21 @@ SELECT * FROM COUNTRY LIMIT 1;
 --------------+------------+-------------
  --Santa Monica |      91084 | USA
 --(1 row)
+
+
+SELECT * FROM computers; id |  make  |    model    | cpu_speed | memory_size |  price  | release_date |            photo_url            | storage_amount | number_usb_ports | number_firewire_ports | number_thunderbolt_ports 
+----+--------+-------------+-----------+-------------+---------+--------------+---------------------------------+----------------+------------------+-----------------------+--------------------------
+  1 | Apple  | MacBook Pro | 3.2 GHz   | 16GB        | 2499.99 | 2023-01-15   | https://example.com/macbook.jpg | 512GB          |                4 |                     0 |                        2
+  2 | Dell   | XPS 15      | 2.8 GHz   | 32GB        | 1899.99 | 2023-03-20   | https://example.com/dell.jpg    | 1TB            |                3 |                     0 |                        1
+  3 | HP     | Pavilion    | 2.4 GHz   | 8GB         |  899.99 | 2022-11-10   | https://example.com/hp.jpg      | 256GB          |                2 |                     1 |                        0
+  4 | Lenovo | ThinkPad    | 3.0 GHz   | 16GB        | 1499.99 | 2023-02-05   | https://example.com/lenovo.jpg  | 512GB          |                3 |                     0 |                        1
+(4 rows)
+id |  model_name  | screen_size | resolution |  price  | release_date |            photo_url            
+----+--------------+-------------+------------+---------+--------------+---------------------------------
+  1 | Samsung QLED | 55 inches   | 4K         | 1299.99 | 2023-04-10   | https://example.com/samsung.jpg
+  2 | LG OLED      | 65 inches   | 4K         | 1999.99 | 2023-05-15   | https://example.com/lg.jpg
+  3 | Sony Bravia  | 50 inches   | 1080p      |  799.99 | 2022-12-01   | https://example.com/sony.jpg
+  4 | TCL Roku     | 43 inches   | 4K         |  499.99 | 2023-03-20   | https://example.com/tcl.jpg
+(4 rows)
+
+(END)
