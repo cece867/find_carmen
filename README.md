@@ -131,3 +131,106 @@ id |  model_name  | screen_size | resolution |  price  | release_date |         
 (4 rows)
 
 (END)
+ql-lab git:(main) ✗ >....                                                                                                             
+
+INSERT INTO storefronts (address, occupied, price, kitchen, sq_ft, owner, outdoor_seating)
+VALUES
+    ('10 Shopping Plaza', true, 3000, true, 1500, 'Restaurant Group LLC', true),
+    ('20 Retail Row', false, 2500, false, 1200, 'Boutique Owner', false),
+    ('30 Market St', true, 4000, true, 2000, 'Cafe Holdings', true);
+EOF
+➜  sql-lab git:(main) ✗ psql realty_db < realty_seed.sql
+psql realty_db < realty.sql
+INSERT 0 3
+INSERT 0 3
+INSERT 0 3
+➜  sql-lab git:(main) ✗ psql realty_db < realty.sql
+➜  sql-lab git:(main) ✗ >....                                                                                                             
+
+\echo 'Office with lowest number of cubicles:'
+SELECT * FROM offices ORDER BY cubicles ASC LIMIT 1;
+
+\echo 'Office with most cubicles and bathrooms:'
+SELECT * FROM offices ORDER BY cubicles DESC, bathrooms DESC LIMIT 1;
+EOF
+➜  sql-lab git:(main) ✗ psql realty_db < realty.sql
+Average square footage of all offices:
+          avg          
+-----------------------
+ 3333.3333333333333333
+(1 row)
+
+Total number of apartments:
+ count 
+-------
+     3
+(1 row)
+
+Apartments where there is no tenant:
+ id | apartment_number | bedrooms | bathrooms |  address   | tenant | occupied | sq_ft | price 
+----+------------------+----------+-----------+------------+--------+----------+-------+-------
+  3 |              303 |        1 |         1 | 789 Elm Rd |        | f        |   600 |  1100
+(1 row)
+
+Names of all companies:
+   company   
+-------------
+ Tech Corp
+ Finance Inc
+ 
+(3 rows)
+
+Number of cubicles and bathrooms in the 3rd office:
+ cubicles | bathrooms 
+----------+-----------
+       10 |         1
+(1 row)
+
+Storefronts that have kitchens:
+ id |      address      | occupied | price | kitchen | sq_ft |        owner         | outdoor_seating 
+----+-------------------+----------+-------+---------+-------+----------------------+-----------------
+  1 | 10 Shopping Plaza | t        |  3000 | t       |  1500 | Restaurant Group LLC | t
+  3 | 30 Market St      | t        |  4000 | t       |  2000 | Cafe Holdings        | t
+(2 rows)
+
+Storefront with highest square footage and outdoor seating:
+ id |   address    | occupied | price | kitchen | sq_ft |     owner     | outdoor_seating 
+----+--------------+----------+-------+---------+-------+---------------+-----------------
+  3 | 30 Market St | t        |  4000 | t       |  2000 | Cafe Holdings | t
+(1 row)
+
+Office with lowest number of cubicles:
+ id | office_number | floors | sq_ft | cubicles | bathrooms |   address    | company | occupied | price 
+----+---------------+--------+-------+----------+-----------+--------------+---------+----------+-------
+  3 |           300 |      1 |  2000 |       10 |         1 | 300 Trade St |         | f        |  3500
+(1 row)
+
+Office with most cubicles and bathrooms:
+ id | office_number | floors | sq_ft | cubicles | bathrooms |     address     |   company   | occupied | price 
+----+---------------+--------+-------+----------+-----------+-----------------+-------------+----------+-------
+  2 |           200 |      3 |  5000 |       25 |         3 | 200 Commerce Dr | Finance Inc | t        |  8000
+(1 row)
+
+Office with most cubicles and bathrooms:
+ id | office_number | floors | sq_ft | cubicles | bathrooms |     address     |   company   | occupied | price 
+----+---------------+--------+-------+----------+-----------+-----------------+-------------+----------+-------
+  2 |           200 |      3 |  5000 |       25 |         3 | 200 Commerce Dr | Finance Inc | t        |  8000
+(1 row)
+--enter your seed data below
+INSERT INTO apartments (apartment_number, bedrooms, bathrooms, address, tenant, occupied, sq_ft, price)
+VALUES
+    (101, 2, 1, '123 Main St', 'John Smith', true, 850, 1500),
+    (202, 3, 2, '456 Oak Ave', 'Jane Doe', true, 1200, 2200),
+    (303, 1, 1, '789 Elm Rd', NULL, false, 600, 1100);
+
+INSERT INTO offices (office_number, floors, sq_ft, cubicles, bathrooms, address, company, occupied, price)
+VALUES
+    (100, 2, 3000, 15, 2, '100 Business Blvd', 'Tech Corp', true, 5000),
+    (200, 3, 5000, 25, 3, '200 Commerce Dr', 'Finance Inc', true, 8000),
+    (300, 1, 2000, 10, 1, '300 Trade St', NULL, false, 3500);
+
+INSERT INTO storefronts (address, occupied, price, kitchen, sq_ft, owner, outdoor_seating)
+VALUES
+    ('10 Shopping Plaza', true, 3000, true, 1500, 'Restaurant Group LLC', true),
+    ('20 Retail Row', false, 2500, false, 1200, 'Boutique Owner', false),
+    ('30 Market St', true, 4000, true, 2000, 'Cafe Holdings', true);
